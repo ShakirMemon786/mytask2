@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<flectra>
+    <data>
+        <record id="vehical_form_view" model="ir.ui.view">
+                <field name="name">vehical form view</field>
+                <field name="model">vehical.data</field>
+                <field name="arch" type="xml">
+                    <form string="Vehical Information" >
+
+                        <header>
+                            <field name="type" widget="statusbar" nolabel="1"/>
+
+                          
+                            <field name="state" widget="statusbar" statusbar_visible="Pending,Confirm" readonly="True"/>
+
+
+                                <button name="state_pending"   widget="statusbar" type="object" string="Pending" class="oe_highlight"/>
+                                <button name="state_confirm"  type="object" widget="statusbar" nolabel="1" string="Confirm" class="oe_highlight"/>
+                               
+
+                     
+                        </header>
+
+                        <group>
+                            <field name="name"/>
+                            <field name="type" />
+                            <field name="chasis_no" />
+                        </group>
+                        <group>
+                            <field name="is_availabe"/>
+                            <field name="vehical_img"/>
+                            <field name="price"/>
+                            <field name="published_date" />
+                            <field name="feul_type"/>
+                            <field name="model"/>
+                            <field name="warranty"/>
+                            <field name="aggrement_date"/>
+                            <field name="customer_line" />
+                            <field name="feature_ids"/>
+                            <field name="state"/>
+                            <field name="total_buyers" help="Aggrement with buyrs"/>
+                        </group>
+
+
+                    </form>
+                </field>
+
+        </record>
+
+
+        <record id="vehical_list_view" model="ir.ui.view">
+            <field name="name">vehical list view</field>
+            <field name="model">vehical.data</field>
+            <field name="arch" type="xml">
+                <tree string="vehical Information">
+
+                            <field name="name"/>
+                            <field name="type" />
+                            <field name="chasis_no" />
+
+                            <field name="warranty"/>
+                            <field name="published_date" />
+                            <field name="feul_type"/>
+                            <field name="model"/>
+                            <field name="total_buyers"/>
+
+                </tree>
+            </field>
+        </record>
+
+        <record id="actio_vehical_data" model="ir.actions.act_window">
+            <field name="name">Vehical</field>
+            <field name="res_model">vehical.data</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="vehical_data_search_view" model="ir.ui.view" >
+            <field name="name">Vehical.search</field>
+            <field name="model">vehical.data</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="type" />
+                    <field name="feul_type" />
+                    <filter string="Type" name="type" domain="[('type','=','bike')]"/>
+                    <filter string="model" name="model" domain="[('model','!=','2010'),('model','!=','2100')]"/>
+
+                    <group expand="0" string="Group By">
+                        <filter name="model" string="Model year" domain="[]" context="{'group_by':'model'}" help="year of model"/>
+                        <filter name="feul_type" string="Feaul type" domain="[]" context="{'group_by':'feul_type'}" help="feul type"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+
+        <record id="vehical_data_view_calendar_" model="ir.ui.view">
+                <field name="name">vehical</field>
+                <field name="model">vehical.data</field>
+                <field name="arch" type="xml">
+                    <calendar string="Session Calendar" date_start="published_date" color="name">
+                        <field name="name"/>
+                        <field name="type"/>
+                    </calendar>
+                </field>
+            </record>
+
+         <record model="ir.actions.act_window" id="action_vehical_calendar">
+            <field name="name">Vechile Details</field>
+            <field name="res_model">vehical.data</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,calendar</field>
+        </record>
+
+
+
+
+
+
+        <menuitem id="vehical_root" name="Vechile data"/>
+        <menuitem id="vehical_root_deatils" name="Vechile Details" parent="vehical_root"/>
+        <menuitem id="vehical_data_info" name="vechile" action="action_vehical_calendar"
+                  parent="vehical_root_deatils"/>
+
+
+
+
+    </data>
+</flectra>

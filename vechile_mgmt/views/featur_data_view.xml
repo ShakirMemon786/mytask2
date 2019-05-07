@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<flectra>
+    <data>
+        <record id="feature_form_view" model="ir.ui.view">
+                <field name="name">Featur form view</field>
+                <field name="model">feature.data</field>
+                <field name="arch" type="xml">
+                    <form string="customer Information" >
+
+
+                        <group>
+                            <field name="name"/>
+                            <field name="is_Available"/>
+                            
+
+                        </group>
+
+                       <group name="vehical_ids">
+                            <label for="vehical_ids" string="Vehical "/>
+                            <field name="vehical_ids" widget="Many2many" nolabel="1">
+                                <tree string="Values" editable="bottom">
+                                     <field name="name"/>
+                                     <field name="type"/>
+
+                                </tree>
+                            </field>
+                        </group>
+
+                    </form>
+                </field>
+
+        </record>
+
+
+        <record id="feature_list_view" model="ir.ui.view">
+            <field name="name">Feature list view</field>
+            <field name="model">feature.data</field>
+            <field name="arch" type="xml">
+                <tree string="customer Information">
+
+                            <field name="name"/>
+                            <field name="is_Available" />
+
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_feature_data" model="ir.actions.act_window">
+            <field name="name">Features</field>
+            <field name="res_model">feature.data</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="feature_data_search_view" model="ir.ui.view" >
+            <field name="name">Feature.search</field>
+            <field name="model">feature.data</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="is_Available" />
+
+                    <filter string="name" name="name" domain="[('name','=','h')]"/>
+
+
+                </search>
+            </field>
+        </record>
+
+
+
+
+      <menuitem id="feature_data_info" name="Feature" action="action_feature_data"
+                  parent="vehical_root_deatils"/>
+
+
+
+    </data>
+</flectra>

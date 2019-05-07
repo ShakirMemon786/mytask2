@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<flectra>
+    <data>
+        <record id="customer_form_view" model="ir.ui.view">
+                <field name="name">customer form view</field>
+                <field name="model">customer.data</field>
+                <field name="arch" type="xml">
+                    <form string="customer Information" >
+
+
+                        <header>
+                          
+                                <field name="state" widget="statusbar" statusbar_visible="Pending,Confirm" readonly="True"/>
+
+
+                                <button name="state_pending"   widget="statusbar" type="object" string="Pending" class="oe_highlight"/>
+                                <button name="state_confirm"  type="object" widget="statusbar" nolabel="1" string="Confirm" class="oe_highlight"/>
+                               
+
+                        </header>
+
+                        <group>
+                            <field name="name"/>
+                            <field name="address"/>
+                            <field name="aggrement_date"/>
+                            <field name="Contact"/>
+                            <field name="vehical_id"/>
+                            <field name="state"/>
+                          
+                        </group>
+                    </form>
+                </field>
+
+        </record>
+
+
+        <record id="customer_list_view" model="ir.ui.view">
+            <field name="name">customer list view</field>
+            <field name="model">customer.data</field>
+            <field name="arch" type="xml">
+                <tree string="customer Information">
+
+                            <field name="name"/>
+                            <field name="address" />
+                            <field name="Contact"/>
+                            <field name="aggrement_date"/>
+                            <field name="state"/>
+                          
+                     
+                            
+
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_customer_data" model="ir.actions.act_window">
+            <field name="name">Customer Details</field>
+            <field name="res_model">customer.data</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="customer_data_search_view" model="ir.ui.view" >
+            <field name="name">Customer.search</field>
+            <field name="model">customer.data</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="address" />
+
+                    <filter string="name" name="name" domain="[('name','=','h')]"/>
+                    <filter string="address" name="address" domain="[('address','!=','PBR')]"/>
+
+
+                </search>
+            </field>
+        </record>
+
+
+
+
+
+
+
+
+
+        <menuitem id="customer_data_info" name="Customer" action="action_customer_data"
+                  parent="vehical_root_deatils"/>
+
+
+
+
+
+
+
+    </data>
+</flectra>
